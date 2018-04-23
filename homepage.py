@@ -1,9 +1,6 @@
-from flask import Flask, render_template
-from flask_bootstrap import Bootstrap
-
-app = Flask(__name__)
-bootstrap = Bootstrap(app)
-
-@app.route('/')
-def starting():
-    return render_template('home.html')
+import sys
+from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QDialog, QComboBox, QHBoxLayout, QVBoxLayout, QPushButton, QLineEdit, QTextBrowser, QGroupBox)
+from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtGui import QPixmap
+from image_information import image_info
+from PIL import Image
