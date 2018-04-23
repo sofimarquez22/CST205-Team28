@@ -8,20 +8,12 @@
 <div class="container">
   <h1><stong>Try Decoding!!!</strong></h1>
   <p>
+    <ol type="1">
+    <li>Instruction One</li>
+    <li>Instruction Two</li>
+    <li>Instruction Three</li>
+    </ol>
   </p>
-
-  <ul class="list-group">
-
-    {% for item in playlist %}
-
-      <li class="list-group-item">{{ item.song }}</li>
-      <li class="list-group-item">{{ item.artist }}</li>
-
-    {% endfor %}
-
-  </ul>
-
-  <a href="{{ url_for('index') }}">Take me home</a>
 
 </div>
 
