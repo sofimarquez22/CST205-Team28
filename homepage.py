@@ -9,7 +9,7 @@ image_list = ['driveforest', 'icemountains', 'nightcity']
 class MyWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('Manipulaing')
+        self.setWindowTitle('Manipulating')
 
         self.combo_box_images = QComboBox()
         self.combo_box_images.addItems(image_list)
