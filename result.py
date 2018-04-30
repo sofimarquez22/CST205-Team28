@@ -23,9 +23,11 @@ class Results(QWidget):
         # self.openFileNameDialog()
         fileName = self.openFileNameDialog()
         # self.openImage(fileName)
-        encoded = self.encode_image(fileName)
-        self.openImage(encoded)
-        self.show()
+        msg = self.search.text()
+        msgEncriptedImg = self.encode_image(fileName, msg)
+        self.openImage(fileName)
+        # self.decode_image(fileName)
+        # self.show()
 
 
 
@@ -37,26 +39,26 @@ class Results(QWidget):
             print(fileName)
         return fileName
 
-    def encode_image(self, fileName):
-        msg = self.search.text()
-        img = Image.open(fileName)
+    def encode_image(self, fileName, msg):
+        # msg = self.search.text()
+        testImg = Image.open(fileName)
 
         length = len(msg)
-        # limit length of message to 255
+
         if length > 255:
-            print("text too long! (don't exeed 255 characters)")
+            print("Message must be under 255 characters")
             return False
-        if img.mode != 'RGB':
-            print("image mode needs to be RGB")
+        if testImg.mode != 'RGB':
+            print("Works only with RGB images")
             return False
-        # use a copy of image to hide the text in
-        encoded = img.copy()
-        width, height = img.size
+
+        msgEncriptedImg = testImg.copy()
+        width, height = testImg.size
         index = 0
         for row in range(height):
             for col in range(width):
-                r, g, b = img.getpixel((col, row))
-                # first value is length of msg
+                r, g, b = testImg.getpixel((col, row))
+
                 if row == 0 and col == 0 and index < length:
                     asc = length
                 elif index <= length:
@@ -64,18 +66,39 @@ class Results(QWidget):
                     asc = ord(c)
                 else:
                     asc = r
-                encoded.putpixel((col, row), (asc, g , b))
+                msgEncriptedImg.putpixel((col, row), (asc, g , b))
                 index += 1
-        encoded = encoded.save(fileName)
-        return encoded
+        print("{} saved!".format(msgEncriptedImg))
+        msgEncriptedImg = msgEncriptedImg.save(fileName)
+        return msgEncriptedImg
 
-    def openImage(self, encoded):
+    def openImage(self, fileName):
         self.new_win = QWidget()
         newLabel = QLabel(self.new_win)
-        pixmap = QPixmap(encoded)
+        pixmap = QPixmap(fileName)
         newLabel.setPixmap(pixmap)
         self.new_win.resize(pixmap.width(),pixmap.height())
         self.new_win.show()
+
+    # def decode_image(self, fileName):
+    #     img = Image.open(fileName)
+    #     width, height = img.size
+    #     msg = ""
+    #     index = 0
+    #     for row in range(height):
+    #         for col in range(width):
+    #             try:
+    #                 r, g, b = img.getpixel((col, row))
+    #             except ValueError:
+    #             # need to add transparency a for some .png files
+    #                 r, g, b, a = img.getpixel((col, row))
+    #         # first pixel r value is length of message
+    #             if row == 0 and col == 0:
+    #                 length = r
+    #             elif index <= length:
+    #                 msg += chr(r)
+    #                 index += 1
+    #     return msg
 
 
 
@@ -88,36 +111,3 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = Results()
     sys.exit(app.exec_())
-
-# def encode_image(img, msg):
-#     """
-#     use the red portion of an image (r, g, b) tuple to
-#     hide the msg string characters as ASCII values
-#     red value of the first pixel is used for length of string
-#     """
-#     length = len(msg)
-#     # limit length of message to 255
-#     if length > 255:
-#         print("text too long! (don't exeed 255 characters)")
-#         return False
-#     if img.mode != 'RGB':
-#         print("image mode needs to be RGB")
-#         return False
-#     # use a copy of image to hide the text in
-#     encoded = img.copy()
-#     width, height = img.size
-#     index = 0
-#     for row in range(height):
-#         for col in range(width):
-#             r, g, b = img.getpixel((col, row))
-#             # first value is length of msg
-#             if row == 0 and col == 0 and index < length:
-#                 asc = length
-#             elif index <= length:
-#                 c = msg[index -1]
-#                 asc = ord(c)
-#             else:
-#                 asc = r
-#             encoded.putpixel((col, row), (asc, g , b))
-#             index += 1
-#     return encoded
