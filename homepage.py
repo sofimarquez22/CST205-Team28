@@ -5,23 +5,29 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtGui import QPixmap
 from PIL import Image
 
-image_list = ['driveforest', 'icemountains', 'nightcity']
+# image_list = ['driveforest', 'icemountains', 'nightcity']
 
 class MyWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('Manipulaing')
 
-        self.combo_box_images = QComboBox()
-        self.combo_box_images.addItems(image_list)
-        self.box_label = QLabel("")
-        self.first_title = QLabel('Choose an image')
+        self.int_label = QLabel("How to use")
+        self.int_button = QPushButton("Click Here!", self)
+
+        # self.combo_box_images = QComboBox()
+        # self.combo_box_images.addItems(image_list)
+        # self.box_label = QLabel("")
+        # self.first_title = QLabel('Choose an image')
+        # self.start_button = QPushButton("Start", self)
+        # self.start_button.clicked.connect(self.chosen_image)
 
 
         hbox1 = QHBoxLayout()
-        hbox1.addWidget(self.first_title)
-        hbox1.addWidget(self.combo_box_images)
-        hbox1.addWidget(self.box_label)
+        hbox1.addWidget(self.int_label)
+        hbox1.addWidget(self.int_button)
+        # hbox1.addWidget(self.first_title)
+        # hbox1.addWidget(self.combo_box_images)
+        # hbox1.addWidget(self.box_label)
 
         gbox1 = QGroupBox()
         gbox1.setLayout(hbox1)
@@ -40,21 +46,17 @@ class MyWindow(QWidget):
         gbox2 = QGroupBox()
         gbox2.setLayout(vbox2)
 
-        self.int_label = QLabel("How to use")
-        self.int_button = QPushButton("Click Here!", self)
-
 
         masterbox = QVBoxLayout()
         masterbox.addWidget(gbox1)
         masterbox.addWidget(gbox2)
-        masterbox.addWidget(self.int_label)
-        masterbox.addWidget(self.int_button)
+
 
 
         self.setGeometry(500, 500, 500, 500)
         self.setLayout(masterbox)
-        self.combo_box_images.currentIndexChanged.connect(self.update_ui)
-        self.setWindowTitle("Window layout")
+        # self.combo_box_images.currentIndexChanged.connect(self.update_ui)
+        self.setWindowTitle('Manipulaing')
 
 
     @pyqtSlot()
@@ -63,6 +65,10 @@ class MyWindow(QWidget):
         my_index = self.combo_box_images.currentIndex()
         self.box_label.setText(f'You chose {my_list[my_index]}.')
 
+    # def chosen_image(self):
+    #     encoded = self.encode_image(fileName)
+    #     self.openImage(encoded)
+    #     self.show()
 
     def click(self):
         self.title = 'PyQt5 file dialogs - pythonspot.com'
