@@ -59,7 +59,7 @@ class Results(QWidget):
                 elif index <= length:
                     msg += chr(r)
                 index += 1
-        img.save(fileName)
+        img.save('new_test.jpg')
         return msg
 
     def openImage(self, fileName):

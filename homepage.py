@@ -26,19 +26,19 @@ class MyWindow(QWidget):
         gbox1 = QGroupBox()
         gbox1.setLayout(hbox1)
 
-        self.choose_label = QLabel("Choose image from your files!")
+        self.choose_label = QLabel("Choose image from your files! And put your message!")
         self.search = QLineEdit()
         self.file_button = QPushButton("Search", self)
         self.file_button.clicked.connect(self.click)
 
-        hbox2 = QHBoxLayout()
-        hbox2.addWidget(self.choose_label)
-        hbox2.addWidget(self.search)
-        hbox2.addWidget(self.file_button)
+        vbox2 = QVBoxLayout()
+        vbox2.addWidget(self.choose_label)
+        vbox2.addWidget(self.search)
+        vbox2.addWidget(self.file_button)
 
 
         gbox2 = QGroupBox()
-        gbox2.setLayout(hbox2)
+        gbox2.setLayout(vbox2)
 
         self.int_label = QLabel("How to use")
         self.int_button = QPushButton("Click Here!", self)
@@ -88,21 +88,18 @@ class MyWindow(QWidget):
         img = Image.open(fileName)
 
         length = len(msg)
-        # limit length of message to 255
         if length > 255:
             print("text too long! (don't exeed 255 characters)")
             return False
         if img.mode != 'RGB':
             print("image mode needs to be RGB")
             return False
-        # use a copy of image to hide the text in
         encoded = img.copy()
         width, height = img.size
         index = 0
         for row in range(height):
             for col in range(width):
                 r, g, b = img.getpixel((col, row))
-                # first value is length of msg
                 if row == 0 and col == 0 and index < length:
                     asc = length
                 elif index <= length:
