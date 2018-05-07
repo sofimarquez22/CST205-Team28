@@ -4,30 +4,49 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtGui import QPixmap
 from PIL import Image
 
+
 class Results(QWidget):
     def __init__(self):
         super().__init__()
-        self.search = QLineEdit()
-        self.button = QPushButton("Test", self)
-        self.button.clicked.connect(self.click)
 
+
+        self.search = QLineEdit()
+        self.button = QPushButton("Upload", self)
+        self.buttonMsg = QPushButton("Encode", self)
+        self.button.clicked.connect(self.click)
+        self.buttonMsg.clicked.connect(self.msgClick)
+
+        # img = Image.open(fileName)
+        # imageDisplay = QLabel(self)
+        # pixmap = QPixmap(img)
+        #
+        # label.setPixmap(pixmap)
 
         vbox = QVBoxLayout()
         vbox.addWidget(self.search)
         vbox.addWidget(self.button)
+        vbox.addWidget(self.buttonMsg)
         self.setLayout(vbox)
         self.show()
 
     def click(self):
-        self.title = 'PyQt5 file dialogs - pythonspot.com'
+        # self.title = 'PyQt5 file dialogs - pythonspot.com'
         # self.openFileNameDialog()
         fileName = self.openFileNameDialog()
         # self.openImage(fileName)
-        msg = self.search.text()
-        msgEncriptedImg = self.encode_image(fileName, msg)
-        self.openImage(fileName)
+        # msg = self.search.text()
+        # msgEncriptedImg = self.encode_image(fileName, msg)
+        return fileName
+        # self.openImage(fileName)
         # self.decode_image(fileName)
         # self.show()
+
+    def msgClick(self, fileName):
+        msg = self.search.text()
+
+        msgEncriptedImg = self.encode_image(fileName, msg)
+
+
 
 
 
