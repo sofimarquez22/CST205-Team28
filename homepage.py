@@ -52,7 +52,7 @@ class MyWindow(QWidget):
         self.title = 'PyQt5 file dialogs - pythonspot.com'
         fileName = self.openFileNameDialog()
         encoded = self.encode_image(fileName)
-        self.openImage(encoded)
+        self.openSecretImage(encoded)
         self.show()
 
 
@@ -122,7 +122,7 @@ class MyWindow(QWidget):
         return secret
 
 
-    def openImage(self, encoded):
+    def openSecretImage(self, encoded):
         self.new_win = QWidget()
         newLabel = QLabel(self.new_win)
         pixmap = QPixmap(encoded)
@@ -130,9 +130,10 @@ class MyWindow(QWidget):
         self.new_win.resize(pixmap.width(),pixmap.height())
         self.new_win.show()
 
-class InstructionWindow(QDialog):
-    def __init__(self):
-        super().__init__()
+
+# class InstructionWindow(QDialog):
+#     def __init__(self):
+#         super().__init__()
 
 app = QApplication(sys.argv)
 win = MyWindow()
