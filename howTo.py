@@ -1,18 +1,20 @@
 import sys
-from PyQt5 import QtGui, QtCore
+from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtCore import QSize
+from PyQt5 import QMainWindow, QLabel, QGridLayout, QWidget, QPushButton
 
-class Window(QtGui.QMainWindow):
+class Window(QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
         self.setGeometry(50, 50, 500, 300)
         self.setWindowTitle("DIY!")
-        btn = QtGui.QPushButton("Quit", self)
-        btn.clicked.connect(self.close_application)
-        btn.resize(btn.minimumSizeHint())
-        btn.move(0,100)
+        btn = QPushButton("Show the steps", self)
+        btn.clicked.connect(self.clickMethod)
         self.show()
 
+    def clicked(self):
+        QMessageBox.about(self, "Title", "Message")
 
-app = QtGui.QApplication(sys.argv)
+app = QtGWidgets.QApplication(sys.argv)
 GUI = Window()
 sys.exit(app.exec_())
