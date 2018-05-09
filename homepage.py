@@ -6,6 +6,9 @@ from PyQt5.QtGui import QPixmap
 from PIL import Image
 
 
+globalsave = "/Users/lykos/temp.jpg"
+
+
 class MyWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -29,6 +32,11 @@ class MyWindow(QWidget):
         self.dec_button = QPushButton("Decode", self)
         self.dec_button.clicked.connect(self.click_dec)
 
+        global globalsave
+        self.picLabel = QLabel(self)
+        self.labelImg = QPixmap(globalsave)
+        self.picLabel.setPixmap(self.labelImg)
+
         vbox2 = QVBoxLayout()
         vbox2.addWidget(self.choose_label)
         vbox2.addWidget(self.search)
@@ -50,9 +58,8 @@ class MyWindow(QWidget):
 
     @pyqtSlot()
     def click(self):
-        self.title = 'PyQt5 file dialogs - pythonspot.com'
-        fileName = self.openFileNameDialog()
-        encoded = self.encode_image(fileName)
+        # fileName = self.openFileNameDialog()
+        # encoded = self.encode_image(fileName)
         self.openSecretImage(encoded)
         self.show()
 
