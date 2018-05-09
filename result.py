@@ -11,7 +11,6 @@ class Results(QWidget):
     def __init__(self):
         super().__init__()
 
-
         self.search = QLineEdit()
         self.button = QPushButton("Upload", self)
         self.buttonMsg = QPushButton("Encode", self)
@@ -24,11 +23,12 @@ class Results(QWidget):
         # pixmap = QPixmap(img)
         # #
         # label.setPixmap(pixmap)
-        global globalsave 
+        global globalsave
         # homeImg = Image.open(globalsave)
         self.picLabel = QLabel(self)
         self.labelImg = QPixmap(globalsave)
         self.picLabel.setPixmap(self.labelImg)
+
 
 
         vbox = QVBoxLayout()
@@ -43,9 +43,12 @@ class Results(QWidget):
     def click(self):
 
 
-        global globalsave
+
         globalsave = self.openFileNameDialog()
-        return globalsave
+        
+        self.labelImg = QPixmap(globalsave)
+        self.picLabel.setPixmap(self.labelImg)
+
 
 
 
