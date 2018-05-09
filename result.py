@@ -5,7 +5,7 @@ from PyQt5.QtGui import QPixmap
 from PIL import Image
 
 
-globalsave = "/Users/lykos/Desktop/CST205-Team28/new_test.jpg"
+globalsave = "/Users/lykos/temp.jpg"
 
 class Results(QWidget):
     def __init__(self):
@@ -24,7 +24,7 @@ class Results(QWidget):
         # pixmap = QPixmap(img)
         # #
         # label.setPixmap(pixmap)
-        global globalsave
+        global globalsave 
         # homeImg = Image.open(globalsave)
         self.picLabel = QLabel(self)
         self.labelImg = QPixmap(globalsave)
@@ -45,6 +45,7 @@ class Results(QWidget):
 
         global globalsave
         globalsave = self.openFileNameDialog()
+        return globalsave
 
 
 

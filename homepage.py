@@ -10,6 +10,7 @@ class MyWindow(QWidget):
     def __init__(self):
         super().__init__()
 
+
         self.int_label = QLabel("How to use")
         self.int_button = QPushButton("Click Here!", self)
 
