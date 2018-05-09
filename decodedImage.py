@@ -3,7 +3,7 @@ import PyQt5.Qwidgets import QApplication, Qwidget, QLabel, QInputDialog, QLineE
 from PyQt5.QtGui import QPixmap, QIcon
 from PIL import Image
 app = QApplication(sys.argv)
-class Image(Qwidget):
+class Image(Qwid2get):
     def __init__(self):
         super().__init__()
         #search the message
