@@ -1,67 +1,70 @@
-import sys
-from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtCore import QSize
-from PyQt5 import QMainWindow, QLabel, QGridLayout, QWidget, QPushButton
+# import sys
+# from PyQt5 import QtCore, QtWidgets
+# from PyQt5.QtCore import QSize
+# from PyQt5.QtWidgets import QMainWindow, QLabel, QGridLayout, QWidget, QPushButton
+#
+# class Window(QMainWindow):
+#     def __init__(self):
+#         super(Window, self).__init__()
+#         self.setGeometry(50, 50, 500, 300)
+#         self.setWindowTitle("DIY!")
+#         btn = QPushButton("Show the steps", self)
+#         btn.clicked.connect(self.clickMethod)
+#         self.show()
+#
+#     def clicked(self):
+#         QMessageBox.about(self, "Title", "Message")
+#
+# app = QtGWidgets.QApplication(sys.argv)
+# GUI = Window()
+# sys.exit(app.exec_())
 
-class Window(QMainWindow):
+
+import sys
+from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton,
+                                QLineEdit, QHBoxLayout, QVBoxLayout, QDialog,
+                                QTextBrowser, QComboBox)
+from PyQt5.QtWebEngineWidgets import QWebEngineView
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtCore import pyqtSlot, QUrl
+
+
+class NewWindow(QDialog):
     def __init__(self):
-        super(Window, self).__init__()
-        self.setGeometry(50, 50, 500, 300)
-        self.setWindowTitle("DIY!")
-        btn = QPushButton("Show the steps", self)
-        btn.clicked.connect(self.clickMethod)
+        super().__init__()
+
+        self.picLabel = QLabel(self)
+        self.instruc_img = QPixmap('images/stars.jpg')
+        self.picLabel.setPixmap(self.instruc_img)
+        self.resize(self.instruc_img.width(),self.instruc_img.height())
+
+        self.picLabel2 = QLabel(self)
+        self.instruc_img2 = QPixmap('images/clouds.jpg')
+        self.picLabel2.setPixmap(self.instruc_img2)
+        self.resize(self.instruc_img2.width(),self.instruc_img2.height())
+
+        vbox2 = QVBoxLayout()
+        
+
         self.show()
 
-    def clicked(self):
-        QMessageBox.about(self, "Title", "Message")
+class MainWindow(QWidget):
+    def __init__(self):
+        super().__init__()
 
-app = QtGWidgets.QApplication(sys.argv)
-GUI = Window()
+        self.btn = QPushButton('CLICK ME')
+
+        vbox = QVBoxLayout()
+        vbox.addWidget(self.btn)
+        self.setLayout(vbox)
+
+        self.btn.clicked.connect(self.open_win)
+
+    @pyqtSlot()
+    def open_win(self):
+        self.new_win = NewWindow()
+
+app = QApplication(sys.argv)
+main = MainWindow()
+main.show()
 sys.exit(app.exec_())
-
-
-import sys
-from PyQt5.QtWidgets import QWidget, QListWidget, QListWidgetItem, QLabel, QPushButton, QApplication
-
-
-class exampleWidget(QWidget):
-    def __init__(self):
-        super().__init__()
-
-        self.initUI()
-
-    def initUI(self):
-        listWidget = QListWidget(self)
-        listWidget.itemDoubleClicked.connect(self.buildExamplePopup)
-
-        names = ["Jack", "Chris", "Joey", "Kim", "Duncan"]
-
-        for n in names:
-            QListWidgetItem(n, listWidget)
-
-        self.setGeometry(100, 100, 100, 100)
-        self.show()
-
-    @staticmethod
-    def buildExamplePopup(item):
-        name = item.text()
-        exPopup = examplePopup(name)
-        exPopup.setGeometry(100, 200, 100, 100)
-        exPopup.show()
-
-
-class examplePopup(QWidget):
-    def __init__(self, name):
-        super().__init__()
-
-        self.name = name
-
-        self.initUI()
-
-    def initUI(self):
-        lblName = QLabel(self.name, self)
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    ex = exampleWidget()
-    sys.exit(app.exec_())
