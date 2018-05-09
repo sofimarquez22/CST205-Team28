@@ -55,10 +55,3 @@ class Image(Qwidget):
 
 image = Image()
 sys.exit(app.exec_())
-
-
-'''class Results(QWidget):
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = Results()
-    sys.exit(app.exec_())'''
