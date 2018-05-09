@@ -5,6 +5,8 @@ from PyQt5.QtGui import QPixmap
 from PIL import Image
 
 
+globalsave = "/Users/lykos/Desktop/CST205-Team28/new_test.jpg"
+
 class Results(QWidget):
     def __init__(self):
         super().__init__()
@@ -16,43 +18,40 @@ class Results(QWidget):
         self.button.clicked.connect(self.click)
         self.buttonMsg.clicked.connect(self.msgClick)
 
-        # img = Image.open(fileName)
+
+        # img = Image.open(globalsave)
         # imageDisplay = QLabel(self)
         # pixmap = QPixmap(img)
-        #
+        # #
         # label.setPixmap(pixmap)
+        global globalsave
+        # homeImg = Image.open(globalsave)
+        self.picLabel = QLabel(self)
+        self.labelImg = QPixmap(globalsave)
+        self.picLabel.setPixmap(self.labelImg)
+
 
         vbox = QVBoxLayout()
         vbox.addWidget(self.search)
         vbox.addWidget(self.button)
         vbox.addWidget(self.buttonMsg)
+        vbox.addWidget(self.picLabel)
+
         self.setLayout(vbox)
         self.show()
 
     def click(self):
-        # self.title = 'PyQt5 file dialogs - pythonspot.com'
-        # self.openFileNameDialog()
-        fileName = self.openFileNameDialog()
-        # self.openImage(fileName)
-<<<<<<< HEAD
-        # msg = self.search.text()
-        # msgEncriptedImg = self.encode_image(fileName, msg)
-        return fileName
-        # self.openImage(fileName)
-        # self.decode_image(fileName)
-        # self.show()
-=======
-        encoded = self.encode_image(fileName)
-        self.openImage(encoded)
-        self.show()
->>>>>>> ddbcd2ae29e12e8743af283e92bd09a2c4155319
 
-    def msgClick(self, fileName):
+
+        global globalsave
+        globalsave = self.openFileNameDialog()
+
+
+
+    def msgClick(self):
         msg = self.search.text()
 
-        msgEncriptedImg = self.encode_image(fileName, msg)
-
-
+        msgEncriptedImg = self.encode_image(globalsave, msg)
 
 
 
@@ -64,9 +63,9 @@ class Results(QWidget):
             print(fileName)
         return fileName
 
-    def encode_image(self, fileName):
-        msg = self.search.text()
-        img = Image.open(fileName)
+    def encode_image(self, globalsave, msg):
+        # msg = self.search.text()
+        img = Image.open(globalsave)
 
         length = len(msg)
         # limit length of message to 255
@@ -93,16 +92,17 @@ class Results(QWidget):
                     asc = r
                 encoded.putpixel((col, row), (asc, g , b))
                 index += 1
-        encoded = encoded.save(fileName)
+        encoded = encoded.save(globalsave)
+        #global^
         return encoded
 
-    def openImage(self, encoded):
-        self.new_win = QWidget()
-        newLabel = QLabel(self.new_win)
-        pixmap = QPixmap(encoded)
-        newLabel.setPixmap(pixmap)
-        self.new_win.resize(pixmap.width(),pixmap.height())
-        self.new_win.show()
+    # def openImage(self, encoded):
+    #     self.new_win = QWidget()
+    #     newLabel = QLabel(self.new_win)
+    #     pixmap = QPixmap(encoded)
+    #     newLabel.setPixmap(pixmap)
+    #     self.new_win.resize(pixmap.width(),pixmap.height())
+    #     self.new_win.show()
 
 
 
