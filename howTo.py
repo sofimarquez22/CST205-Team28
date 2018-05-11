@@ -44,7 +44,7 @@ class NewWindow(QDialog):
         self.resize(self.instruc_img2.width(),self.instruc_img2.height())
 
         vbox2 = QVBoxLayout()
-        
+        vbox2.addWidget
 
         self.show()
 
