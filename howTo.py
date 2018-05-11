@@ -1,10 +1,10 @@
 import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton,
                                 QLineEdit, QHBoxLayout, QVBoxLayout, QDialog,
-                                QTextBrowser, QComboBox)
+                                QTextBrowser, QComboBox, QGroupBox)
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtCore import pyqtSlot, QUrl
+from PyQt5.QtCore import pyqtSlot
 
 
 class NewWindow(QDialog):
@@ -16,16 +16,23 @@ class NewWindow(QDialog):
         self.picLabel.setPixmap(self.instruc_img)
         self.resize(self.instruc_img.width(),self.instruc_img.height())
 
+
         self.picLabel2 = QLabel(self)
         self.instruc_img2 = QPixmap('images/clouds.jpg')
         self.picLabel2.setPixmap(self.instruc_img2)
         self.resize(self.instruc_img2.width(),self.instruc_img2.height())
 
-#QGroupBox
-        vbox2 = QVBoxLayout()
+        self.picLabel3 = QLabel(self)
+        self.instruc_img3 = QPixmap('images/forestroad.jpg')
+        self.picLabel3.setPixmap(self.instruc_img3)
+        self.resize(self.instruc_img3.width(),self.instruc_img3.height())
 
 
-
+        vbox = QVBoxLayout()
+        vbox.addWidget(self.picLabel)
+        vbox.addWidget(self.picLabel2)
+        vbox.addWidget(self.picLabel3)
+        self.setLayout(vbox)
         self.show()
 
 class MainWindow(QWidget):
