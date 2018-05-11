@@ -23,6 +23,9 @@ class NewWindow(QDialog):
 
 #QGroupBox
         vbox2 = QVBoxLayout()
+
+
+
         self.show()
 
 class MainWindow(QWidget):

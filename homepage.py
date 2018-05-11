@@ -6,7 +6,7 @@ from PyQt5.QtGui import QPixmap
 from PIL import Image
 
 
-globalsave = "/Users/lykos/temp.jpg"
+globalsave = ""
 
 
 class MyWindow(QWidget):
@@ -43,6 +43,7 @@ class MyWindow(QWidget):
         vbox2.addWidget(self.file_button)
         vbox2.addWidget(self.dec_label)
         vbox2.addWidget(self.dec_button)
+        vbox2.addWidget(self.picLabel)
 
         gbox2 = QGroupBox()
         gbox2.setLayout(vbox2)
@@ -58,16 +59,20 @@ class MyWindow(QWidget):
 
     @pyqtSlot()
     def click(self):
-        # fileName = self.openFileNameDialog()
-        # encoded = self.encode_image(fileName)
-        self.openSecretImage(encoded)
+        globalsave = self.openFileNameDialog()
+        encoded_mes = self.encode_image(globalsave)
+        self.labelImg = QPixmap(globalsave)
+        self.picLabel.setPixmap(self.labelImg)
         self.show()
 
 
+
     def click_dec(self,secret):
-        self.title = 'PyQt5 file dialogs - pythonspot.com'
         fileName = self.openFileNameDialog()
         hidden_text = self.decode_image(fileName)
+        self.labelImg = QPixmap(fileName)
+        self.picLabel.setPixmap(self.labelImg)
+        self.show()
         print("Hidden text:\n{}".format(hidden_text))
 
 
@@ -80,9 +85,9 @@ class MyWindow(QWidget):
         return fileName
 
 
-    def encode_image(self, fileName):
+    def encode_image(self, globalsave):
         message = self.search.text()
-        image = Image.open(fileName)
+        image = Image.open(globalsave)
 
         length = len(message)
         if length > 200:
@@ -110,8 +115,8 @@ class MyWindow(QWidget):
         return encoded
 
 
-    def decode_image(self,fileName):
-        chosen_image = Image.open(fileName)
+    def decode_image(self,encoded):
+        chosen_image = Image.open(encoded)
         width, height = chosen_image.size
         secret = ""
         index = 0
@@ -139,9 +144,6 @@ class MyWindow(QWidget):
         self.new_win.show()
 
 
-# class InstructionWindow(QDialog):
-#     def __init__(self):
-#         super().__init__()
 
 app = QApplication(sys.argv)
 win = MyWindow()
