@@ -45,7 +45,8 @@ class MainWindow(QWidget):
         vbox.addWidget(self.btn)
         self.setLayout(vbox)
 
-        self.btn.clicked.connect(self.open_win)
+        self.int.clicked.connect(self.open_win)
+
 
     @pyqtSlot()
     def open_win(self):
