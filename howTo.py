@@ -9,7 +9,6 @@ from PyQt5.QtCore import pyqtSlot, QUrl
 
 class NewWindow(QDialog):
     def __init__(self):
-
         super().__init__()
 
         self.picLabel = QLabel(self)
@@ -22,9 +21,8 @@ class NewWindow(QDialog):
         self.picLabel2.setPixmap(self.instruc_img2)
         self.resize(self.instruc_img2.width(),self.instruc_img2.height())
 
+#QGroupBox
         vbox2 = QVBoxLayout()
-
-
         self.show()
 
 class MainWindow(QWidget):
@@ -46,5 +44,4 @@ class MainWindow(QWidget):
 app = QApplication(sys.argv)
 main = MainWindow()
 main.show()
->>>>>>> 5156fa07dd56ea1a19e5acad684b33846f23cdfd
 sys.exit(app.exec_())
