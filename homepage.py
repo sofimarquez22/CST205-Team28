@@ -9,6 +9,36 @@ from PIL import Image
 globalsave = ""
 
 
+class NewWindow(QDialog):
+    def __init__(self):
+        super().__init__()
+
+        self.picLabel = QLabel(self)
+        self.instruc_img = QPixmap('images/stars.jpg')
+        self.picLabel.setPixmap(self.instruc_img)
+        self.resize(self.instruc_img.width(),self.instruc_img.height())
+
+
+        self.picLabel2 = QLabel(self)
+        self.instruc_img2 = QPixmap('images/clouds.jpg')
+        self.picLabel2.setPixmap(self.instruc_img2)
+        self.resize(self.instruc_img2.width(),self.instruc_img2.height())
+
+        self.picLabel3 = QLabel(self)
+        self.instruc_img3 = QPixmap('images/forestroad.jpg')
+        self.picLabel3.setPixmap(self.instruc_img3)
+        self.resize(self.instruc_img3.width(),self.instruc_img3.height())
+
+
+        vbox = QVBoxLayout()
+        vbox.addWidget(self.picLabel)
+        vbox.addWidget(self.picLabel2)
+        vbox.addWidget(self.picLabel3)
+        self.setLayout(vbox)
+        self.show()
+
+
+
 class MyWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -16,6 +46,8 @@ class MyWindow(QWidget):
 
         self.int_label = QLabel("How to use")
         self.int_button = QPushButton("Click Here!", self)
+        self.int_button.clicked.connect(self.open_win)
+
 
         hbox1 = QHBoxLayout()
         hbox1.addWidget(self.int_label)
@@ -58,6 +90,9 @@ class MyWindow(QWidget):
 
 
     @pyqtSlot()
+    def open_win(self):
+        self.new_win = NewWindow()
+
     def click(self):
         globalsave = self.openFileNameDialog()
         encoded_mes = self.encode_image(globalsave)
@@ -134,14 +169,6 @@ class MyWindow(QWidget):
         chosen_image.save('decode_image.jpg')
         return secret
 
-
-    def openSecretImage(self, encoded):
-        self.new_win = QWidget()
-        newLabel = QLabel(self.new_win)
-        pixmap = QPixmap(encoded)
-        newLabel.setPixmap(pixmap)
-        self.new_win.resize(pixmap.width(),pixmap.height())
-        self.new_win.show()
 
 
 
