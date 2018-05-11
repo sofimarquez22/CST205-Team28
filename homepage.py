@@ -28,7 +28,7 @@ class MyWindow(QWidget):
         self.search = QLineEdit()
         self.file_button = QPushButton("Search", self)
         self.file_button.clicked.connect(self.click)
-        self.dec_label = QLabel("Push this to Deconde")
+        self.dec_label = QLabel("Push this to Decode")
         self.dec_button = QPushButton("Decode", self)
         self.dec_button.clicked.connect(self.click_dec)
 

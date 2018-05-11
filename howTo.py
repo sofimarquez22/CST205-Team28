@@ -1,25 +1,3 @@
-# import sys
-# from PyQt5 import QtCore, QtWidgets
-# from PyQt5.QtCore import QSize
-# from PyQt5.QtWidgets import QMainWindow, QLabel, QGridLayout, QWidget, QPushButton
-#
-# class Window(QMainWindow):
-#     def __init__(self):
-#         super(Window, self).__init__()
-#         self.setGeometry(50, 50, 500, 300)
-#         self.setWindowTitle("DIY!")
-#         btn = QPushButton("Show the steps", self)
-#         btn.clicked.connect(self.clickMethod)
-#         self.show()
-#
-#     def clicked(self):
-#         QMessageBox.about(self, "Title", "Message")
-#
-# app = QtGWidgets.QApplication(sys.argv)
-# GUI = Window()
-# sys.exit(app.exec_())
-
-
 import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton,
                                 QLineEdit, QHBoxLayout, QVBoxLayout, QDialog,
@@ -31,6 +9,7 @@ from PyQt5.QtCore import pyqtSlot, QUrl
 
 class NewWindow(QDialog):
     def __init__(self):
+
         super().__init__()
 
         self.picLabel = QLabel(self)
@@ -44,7 +23,8 @@ class NewWindow(QDialog):
         self.resize(self.instruc_img2.width(),self.instruc_img2.height())
 
         vbox2 = QVBoxLayout()
-        vbox2.addWidget
+
+
 
         self.show()
 
