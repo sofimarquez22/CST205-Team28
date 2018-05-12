@@ -9,39 +9,76 @@ from PIL import Image
 
 globalsave = ""
 
+
 class NewWindow(QDialog):
     def __init__(self):
         super().__init__()
 
+        self.step1_label = QLabel("Enter anything in textbox and then click the search button.")
         self.picLabel = QLabel(self)
-        self.instruc_img = QPixmap('images/stars.jpg')
+        self.instruc_img = QPixmap('Steps/StepOne.PNG')
         self.picLabel.setPixmap(self.instruc_img)
         self.resize(self.instruc_img.width(),self.instruc_img.height())
 
+        verBox1 = QVBoxLayout()
+        verBox1.addWidget(self.step1_label)
+        verBox1.addWidget(self.picLabel)
 
+        groupbox1 = QGroupBox()
+        groupbox1.setLayout(verBox1)
+
+        self.step2_label = QLabel("Click on the images folder, pick an image provided or any image you have.")
         self.picLabel2 = QLabel(self)
-        self.instruc_img2 = QPixmap('images/clouds.jpg')
+        self.instruc_img2 = QPixmap('Steps/StepTwo.PNG')
         self.picLabel2.setPixmap(self.instruc_img2)
         self.resize(self.instruc_img2.width(),self.instruc_img2.height())
 
+        verBox2 = QVBoxLayout()
+        verBox2.addWidget(self.step2_label)
+        verBox2.addWidget(self.picLabel2)
+
+        groupbox2 = QGroupBox()
+        groupbox2.setLayout(verBox2)
+
+        self.step3_label = QLabel("Orginal image will show and then click on decode.")
         self.picLabel3 = QLabel(self)
-        self.instruc_img3 = QPixmap('images/forestroad.jpg')
+        self.instruc_img3 = QPixmap('Steps/StepThree.PNG')
         self.picLabel3.setPixmap(self.instruc_img3)
         self.resize(self.instruc_img3.width(),self.instruc_img3.height())
 
+        verBox3 = QVBoxLayout()
+        verBox3.addWidget(self.step3_label)
+        verBox3.addWidget(self.picLabel3)
 
-        vbox = QVBoxLayout()
-        vbox.addWidget(self.picLabel)
-        vbox.addWidget(self.picLabel2)
-        vbox.addWidget(self.picLabel3)
-        self.setLayout(vbox)
+        groupbox3 = QGroupBox()
+        groupbox3.setLayout(verBox3)
+
+        self.step4_label = QLabel("Click on the secret_image file and open to show the final results.")
+        self.picLabel4 = QLabel(self)
+        self.instruc_img4 = QPixmap('Steps/StepFour.PNG')
+        self.picLabel4.setPixmap(self.instruc_img4)
+        self.resize(self.instruc_img4.width(),self.instruc_img4.height())
+
+        verBox4 = QVBoxLayout()
+        verBox4.addWidget(self.step4_label)
+        verBox4.addWidget(self.picLabel4)
+
+        groupbox4 = QGroupBox()
+        groupbox4.setLayout(verBox4)
+
+        Final_masterbox = QHBoxLayout()
+        Final_masterbox.addWidget(groupbox1)
+        Final_masterbox.addWidget(groupbox2)
+        Final_masterbox.addWidget(groupbox3)
+        Final_masterbox.addWidget(groupbox4)
+
+        self.setLayout(Final_masterbox)
         self.show()
 
 
 class MyWindow(QWidget):
     def __init__(self):
         super().__init__()
-
 
         self.int_label = QLabel("How to use")
         self.int_button = QPushButton("Click Here!", self)
@@ -84,21 +121,20 @@ class MyWindow(QWidget):
 
         self.setGeometry(500, 500, 500, 500)
         self.setLayout(masterbox)
-        self.setWindowTitle('Manipulaing')
+        self.setWindowTitle('Hide those Letters!')
+
 
     @pyqtSlot()
     def open_win(self):
         self.new_win = NewWindow()
 
 
-    @pyqtSlot()
     def click(self):
         globalsave = self.openFileNameDialog()
         encoded_mes = self.encode_image(globalsave)
         self.labelImg = QPixmap(globalsave)
         self.picLabel.setPixmap(self.labelImg)
         self.show()
-
 
 
     def click_dec(self,secret):
@@ -167,16 +203,6 @@ class MyWindow(QWidget):
                 index += 1
         chosen_image.save('decode_image.jpg')
         return secret
-
-
-    def openSecretImage(self, encoded):
-        self.new_win = QWidget()
-        newLabel = QLabel(self.new_win)
-        pixmap = QPixmap(encoded)
-        newLabel.setPixmap(pixmap)
-        self.new_win.resize(pixmap.width(),pixmap.height())
-        self.new_win.show()
-
 
 
 app = QApplication(sys.argv)
