@@ -4,8 +4,8 @@ A program that launches a window which will allow the user to encode and decode 
 
 ## Team Members
 
-Eduardo Soto Rodriguez
-Francisco Herrera
+Eduardo Soto Rodriguez,
+Francisco Herrera,
 Blanca Marquez
 
 ## Class
