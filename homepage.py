@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QDialog, QComboBox, QHBoxLayout, QVBoxLayout, QPushButton, QLineEdit, QTextBrowser, QGroupBox, QInputDialog, QFileDialog)
 from PyQt5.QtCore import pyqtSlot
@@ -89,7 +90,7 @@ class MyWindow(QWidget):
     def open_win(self):
         self.new_win = NewWindow()
 
-        
+
     @pyqtSlot()
     def click(self):
         globalsave = self.openFileNameDialog()
