@@ -14,7 +14,7 @@ class NewWindow(QDialog):
     def __init__(self):
         super().__init__()
 
-        self.step1_label = QLabel("Enter anything in textbox and then click the search button.")
+        self.step1_label = QLabel("Step 1: Enter anything in textbox and then click the search button.")
         self.picLabel = QLabel(self)
         self.instruc_img = QPixmap('Steps/StepOne.PNG')
         self.picLabel.setPixmap(self.instruc_img)
@@ -27,7 +27,7 @@ class NewWindow(QDialog):
         groupbox1 = QGroupBox()
         groupbox1.setLayout(verBox1)
 
-        self.step2_label = QLabel("Click on the images folder, pick an image provided or any image you have.")
+        self.step2_label = QLabel("Step 2: Click on the images folder, pick an image provided or any image you have.")
         self.picLabel2 = QLabel(self)
         self.instruc_img2 = QPixmap('Steps/StepTwo.PNG')
         self.picLabel2.setPixmap(self.instruc_img2)
@@ -40,7 +40,7 @@ class NewWindow(QDialog):
         groupbox2 = QGroupBox()
         groupbox2.setLayout(verBox2)
 
-        self.step3_label = QLabel("Orginal image will show and then click on decode.")
+        self.step3_label = QLabel("Step 3: Orginal image will show and then click on decode.")
         self.picLabel3 = QLabel(self)
         self.instruc_img3 = QPixmap('Steps/StepThree.PNG')
         self.picLabel3.setPixmap(self.instruc_img3)
@@ -53,7 +53,7 @@ class NewWindow(QDialog):
         groupbox3 = QGroupBox()
         groupbox3.setLayout(verBox3)
 
-        self.step4_label = QLabel("Click on the secret_image file and open to show the final results.")
+        self.step4_label = QLabel("Step 4: Click on the secret_image file and open to show the final results.")
         self.picLabel4 = QLabel(self)
         self.instruc_img4 = QPixmap('Steps/StepFour.PNG')
         self.picLabel4.setPixmap(self.instruc_img4)
@@ -73,6 +73,7 @@ class NewWindow(QDialog):
         Final_masterbox.addWidget(groupbox4)
 
         self.setLayout(Final_masterbox)
+        self.setWindowTitle('How-To Guide')
         self.show()
 
 
