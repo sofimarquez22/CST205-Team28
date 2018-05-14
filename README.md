@@ -34,4 +34,4 @@ https://github.com/sofimarquez22/CST205-Team28.git
 
 ## Future Work
 
-Maybe in the future, we can also work with music files or sound waves in general to hide messages.
+In the future we could look into working with music files or sound waves in general to hide messages.
