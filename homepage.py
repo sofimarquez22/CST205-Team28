@@ -6,6 +6,8 @@ Eduardo Soto Rodriguez, Francisco Herrera, Blanca Marquez
 
 Purpose of this program is to allow the user to hide a message in a RGB image
 and then also allow them to decode the image.
+Everyone in the team worked on different files to avoid merge conflicts and the
+result of the work is this final file in which was pieced together.
 '''
 import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QDialog, QComboBox, QHBoxLayout, QVBoxLayout, QPushButton, QLineEdit, QTextBrowser, QGroupBox, QInputDialog, QFileDialog)
