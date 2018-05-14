@@ -33,3 +33,5 @@ May 13, 2018
 https://github.com/sofimarquez22/CST205-Team28.git
 
 ## Future Work
+
+Maybe in the future, we can also work with music files or sound waves in general to hide messages.
