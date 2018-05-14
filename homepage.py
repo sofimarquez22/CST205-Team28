@@ -12,7 +12,6 @@ result of the work is this final file in which was pieced together.
 import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QDialog, QComboBox, QHBoxLayout, QVBoxLayout, QPushButton, QLineEdit, QTextBrowser, QGroupBox, QInputDialog, QFileDialog, QScrollArea)
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtGui import QIcon
 from PyQt5.QtGui import QPixmap
 from PIL import Image
 
