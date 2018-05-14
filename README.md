@@ -14,7 +14,7 @@ CST205-01_SP18:Multimedia Design & Progmng
 
 ## Date
 
-May 14, 2018
+May 13, 2018
 
 ## How to run program
 
@@ -22,7 +22,7 @@ May 14, 2018
     To download python go the https://www.python.org/downloads/ and download the latest version.
     In terminal type "pip install pyqt5" and "pip install pillow"
 --Once you have those installed make sure you properly downloaded the project(GitHub link) and run by typing "python  homepage.py"
-    
+
 ## Built With
 
 * [DaniWeb](https://www.daniweb.com/programming/software-development/code/485063/hide-private-message-in-an-image-python)- code referenced/citations
@@ -34,4 +34,4 @@ https://github.com/sofimarquez22/CST205-Team28.git
 
 ## Future Work
 
-
+Maybe in the future, we can also work with music files or sound waves in general to hide messages.
