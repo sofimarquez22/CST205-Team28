@@ -1,6 +1,5 @@
-
 import sys
-from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QDialog, QComboBox, QHBoxLayout, QVBoxLayout, QPushButton, QLineEdit, QTextBrowser, QGroupBox, QInputDialog, QFileDialog)
+from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QDialog, QComboBox, QHBoxLayout, QVBoxLayout, QPushButton, QLineEdit, QTextBrowser, QGroupBox, QInputDialog, QFileDialog, QScrollArea)
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QIcon
 from PyQt5.QtGui import QPixmap
@@ -71,6 +70,7 @@ class NewWindow(QDialog):
         Final_masterbox.addWidget(groupbox2)
         Final_masterbox.addWidget(groupbox3)
         Final_masterbox.addWidget(groupbox4)
+
 
         self.setLayout(Final_masterbox)
         self.show()
