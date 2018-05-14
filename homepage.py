@@ -86,6 +86,16 @@ class NewWindow(QDialog):
         Final_masterbox.addWidget(groupbox3)
         Final_masterbox.addWidget(groupbox4)
 
+        #Scroll Area Properties
+        scroll = QHScrollArea()
+        scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        scroll.setWidget(widget)
+
+        #Scroll Area Layer add
+        hLayout = QHBoxLayout(self)
+        hLayout.addWidget(scroll)
+        self.setLayout(hLayout)
 
         self.setLayout(Final_masterbox)
         self.setWindowTitle('How-To Guide')
