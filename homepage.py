@@ -80,7 +80,7 @@ class NewWindow(QDialog):
         groupbox4 = QGroupBox()
         groupbox4.setLayout(verBox4)
 
-        Final_masterbox = QVBoxLayout()
+        Final_masterbox = QHBoxLayout()
         Final_masterbox.addWidget(groupbox1)
         Final_masterbox.addWidget(groupbox2)
         Final_masterbox.addWidget(groupbox3)
